@@ -6,17 +6,17 @@
     >
       <q-input
         rounded filled
-        v-model="name"
-        label="First name *"
+        v-model="firstName"
+        label="First Name *"
         lazy-rules
-        :rules="[ val => val && val.length > 0 || 'Please type your Valid First Name']"
+        :rules="[ val => val && val.length > 0 || 'Please type your First Name']"
       ></q-input>
       <q-input
         rounded filled
-        v-model="last_name"
-        label="Last name *"
+        v-model="lastName"
+        label="Last Name *"
         lazy-rules
-        :rules="[ val => val && val.length > 0 || 'Please type your Valid Last Name']"
+        :rules="[ val => val && val.length > 0 || 'Please type your Last Name']"
       ></q-input>
 
       <q-input
@@ -26,8 +26,8 @@
         label="Your age *"
         lazy-rules
         :rules="[
-          val => val !== null && val !== '' || 'Please type your age',
-          val => val > 0 && val < 100 || 'Please type a real age'
+          val => val !== null && val !== '' || 'Please enter your age',
+          val => val > 0 && val < 100 || 'Please enter your age'
         ]"
       ></q-input>
       <q-input
@@ -47,7 +47,7 @@
         label="Enter your email-id *"
         lazy-rules
         :rules="[
-           val => val && val.length > 6 || 'Please type your Valid User Name']"
+           val => val && val.length > 6 || 'Please type your User Name']"
       ></q-input>
       <q-input
         rounded filled
@@ -76,8 +76,8 @@ export default {
   name:'signup',
   data () {
     return {
-      name: null,
-      last_name:null,
+      firstName: null,
+      lastName:null,
       age: null,
       phone:null,
       email:null,
@@ -96,20 +96,19 @@ export default {
        
       }
       const data={      //this code demonstrates that our data is reflected in console properly.
-        name: this.name,
-        last_name:this.last_name,
+        firstName: this.firstName,
+        lastName:this.lastName,
         age: this.age,
         phone:this.phone,
         email:this.email,
         password:this.password,
-      };
-      console.log(data) 
+      }; 
     },
 
     onReset () {
-      this.name = null
+      this.firstNname = null
       this.age = null
-      this.last_name = null
+      this.lastName = null
       this.phone = null
       this.email = null
       this.password = null
