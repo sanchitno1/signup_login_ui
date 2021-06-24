@@ -1,5 +1,5 @@
 <template>
-    <div>
-        <h4>Credentials Submitted</h4>
-    </div>
+    <h4>
+        Submitted Successfully
+    </h4>
 </template>

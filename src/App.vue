@@ -1,14 +1,18 @@
 <template>
   <div id="q-app">
-    <router-view />
+    <center>
+      <img src="~assets/cilalog.jpg" alt="Cila Image" height="100" width="100">
+    </center>
+    
+  <router-view />
   </div>
 </template>
+
 <script>
-// import signup from 'components/signup'
+
+
 export default {
-  name: 'App'
-  // components:{
-  //   signup
-  // }
-}
+  name: 'App',
+  
+};
 </script>

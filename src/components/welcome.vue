@@ -1,5 +1,7 @@
 <template>
     <div>
-        <h4>Login SuccessFull!!</h4>
+    <h4>
+        Welcome
+    </h4>
     </div>
 </template>

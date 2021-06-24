@@ -1,21 +1,12 @@
-
 const routes = [
   {
     path: '/',
-    component: () => import('layouts/MainLayout.vue'),
-  },
-
-  {
-    path: '*',
-    component: () => import('pages/Error404.vue')
+    component: () => import('components/signup.vue'),
+    
   },
   {
     path: '/signin',
     component: () => import('components/signin.vue')
-  },
-  {
-    path: '/welcome',
-    component: () => import('components/welcome.vue')
   },
   {
     path: '/submitted',
@@ -26,9 +17,18 @@ const routes = [
     component: () => import('components/password.vue')
   },
   {
-    path: '/signup',
-    component: () => import('components/signup.vue')
+    path:'/welcome',
+    component:() => import('components/welcome.vue')
+  },
+  {
+    path:'/signup',
+    component:() => import('components/signup.vue')
+  },
+  {
+    path: '/:catchAll(.*)*',
+    component: () => import('pages/Error404.vue')
   }
 ]
 
 export default routes
+
