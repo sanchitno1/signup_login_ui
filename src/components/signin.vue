@@ -1,36 +1,72 @@
 <template>
-    <q-form 
-    class="q-gutter-md"
-    >
-    <p><strong>
-        <center><h4><u>
-            Login to Continue
-        </u></h4></center>
-    </strong></p>
-    <q-input
-        rounded filled
-        v-model="email"
-        label="Enter Your E-Mail *"
-        lazy-rules
-        :rules="[ val => val && val.length > 6 || 'Please type your Valid E-Mail']"
-      ></q-input>
-      <q-input
-        rounded filled
-        v-model="password"
-        label="Enter Your Password *"
-        lazy-rules
-        :rules="[ val => val && val.length > 7 || 'Please type your Valid Password']"
-      ></q-input>
-      <div>
-          <q-btn @click="onLogin()" label="Sign In" color="secondary"></q-btn>
-          <q-btn @click="forgetPassword()" label="Forget Password" color="primary" flat class="q-ml-sm"></q-btn>
+    <div>
+    <p style="font-size:30px">
+        <center>Welcome, Enter Login Details</center>
+    </p>
+     <div class="row">
+              <div class="col-4"></div>
+                <div class="col-5">
+                  <div class="col q-pt-lg q-px-md">
+                    <label>Username</label>
+                    <q-input
+                        ref="email"
+                        outlined
+                        v-model="email"
+                        label="Username"
+                        class="q-mt "
+                        lazy-rules
+                        :rules="[ val => val && val.length > 7 || 'Please type valid email']"           
+                        >
+                      </q-input>
+                  </div>
+                </div>
+              <div class="col-4"></div>
+            </div>
+       <div class="row">
+              <div class="col-4"></div>
+                <div class="col-5">
+                  <div class="col q-pt-lg q-px-md">
+                    <label>Password</label>
+                    <q-input
+                        ref="password"     
+                        outlined
+                        v-model="password"
+                        label="Enter Password" 
+                        class="q-mt "
+                        lazy-rules
+                        :rules="[ val => val && val.length > 7 || 'Please type valid password',
+                                  ]"           
+                        >
+                      </q-input>
+                  </div>
+                </div>
+              <div class="col-4"></div>
+            </div>
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-7">
+                <router-link style="font-size:18px;color:blue;" to="/password">*Forget Your Password</router-link>
+            </div>
+            <div class="col-4"></div>
+        </div><br>
+      <div class="row">
+        <div class="col-4"></div>
+        <div class="col-5">
+          <q-btn class="primary full-width q-px-xl" label="Sign In" color="primary" @click.prevent.stop="onSignin()"></q-btn>
+        </div>
+        <div class="col-4"></div>
       </div>
-        <hr>
-         <q-btn @click="onSignUp()" label="Sign Up" color="primary"></q-btn>
-      <div>
-          <img src="~assets/cila2.jpg" alt="Cila" height="400px" width="100%">
+      <div class="row">
+        <div class="col-5"></div>
+        <div class="col-3">
+          <h6>
+            Don't have an account?
+            <router-link style="text-decoration: none;" to="/signup">Register</router-link>
+          </h6>
+        </div>
+        <div class="col-5"></div>
       </div>
-    </q-form>
+    </div>
 </template>
 
 <script>
@@ -43,19 +79,17 @@ export default {
         }
     },
     methods:{
-        onLogin(){
-            if(this.email==null || this.password==null){
-                alert("Enter the correct credentials")
-            }else
-            this.$router.push('/welcome')
-        },
-        forgetPassword(){
-            this.$router.push('/password')
-        },
-        onSignUp(){
-            this.$router.push('/signup')
-        }
-        
+      onSignin(){
+         this.$refs.email.validate()
+        this.$refs.password.validate()
+        if (this.$refs.email.hasError || this.$refs.password.hasError) {
+        this.formHasError = true 
+      }
+      else{
+        this.$router.push('/welcome')
+      }
+      }
     }
 }
 </script>
+
